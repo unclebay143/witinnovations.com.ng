@@ -1,0 +1,108 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
+
+interface NavItem {
+  name: string;
+  href: string;
+}
+
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [showNavbar, setShowNavbar] = useState(true);
+  let scrollTimeout: NodeJS.Timeout;
+
+  const toggleMenu = () => setIsOpen(!isOpen);
+
+  const navItems: NavItem[] = [
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
+    { name: "Services", href: "/services" },
+    { name: "Past Projects", href: "/projects" },
+    { name: "Contact", href: "/contact" },
+  ];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowNavbar(false);
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => setShowNavbar(true), 500);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      clearTimeout(scrollTimeout);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  return (
+    <>
+      <AnimatePresence>
+        {showNavbar && (
+          <motion.header
+            key="navbar"
+            initial={{ y: -100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -100, opacity: 0 }}
+            transition={{ duration: 0.7, ease: "easeInOut" }}
+            className="fixed top-0 left-0 w-full z-50 bg-[#eaeaea] hadow-md"
+          >
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 font-medium">
+              <div className="flex justify-between items-center h-[106px]">
+                <a href="/" className="text-xl font-bold text-[#745296]">
+                  WIT Innovations
+                </a>
+
+                <nav className="hidden md:flex space-x-6">
+                  {navItems.map((item) => (
+                    <a
+                      key={item.name}
+                      href={item.href}
+                      className="hover:text-[#745296] transition duration-300 ease-in-out"
+                    >
+                      {item.name}
+                    </a>
+                  ))}
+                </nav>
+
+                <div className="md:hidden">
+                  <button
+                    onClick={toggleMenu}
+                    aria-label="Toggle Menu"
+                    className="focus:outline-none"
+                  >
+                    {isOpen ? (
+                      <X size={24} className="text-red-700" />
+                    ) : (
+                      <Menu size={24} className="text-[#745296]" />
+                    )}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </motion.header>
+        )}
+      </AnimatePresence>
+
+      {isOpen && (
+        <div className="md:hidden h-screen pt-24 px-6 space-y-6">
+          {navItems.map((item) => (
+            <a
+              key={item.name}
+              href={item.href}
+              className="block hover:text-[#745296] text-lg font-medium transition duration-300 ease-in-out"
+              onClick={() => setIsOpen(false)}
+            >
+              {item.name}
+            </a>
+          ))}
+        </div>
+      )}
+    </>
+  );
+};
+
+export default Navbar;
