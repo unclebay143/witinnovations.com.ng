@@ -48,12 +48,16 @@ const Navbar = () => {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -100, opacity: 0 }}
             transition={{ duration: 0.7, ease: "easeInOut" }}
-            className="fixed top-0 left-0 w-full z-50 bg-[#eaeaea] hadow-md"
+            className="fixed top-0 left-0 w-full z-50 bg-[#252525] text-white hadow-md"
           >
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 font-medium">
               <div className="flex justify-between items-center h-[106px]">
-                <a href="/" className="text-xl font-bold text-[#745296]">
-                  WIT Innovations
+                <a href="/">
+                  <img
+                    src="https://res.cloudinary.com/dcgghkk7q/image/upload/v1751380639/WIT-logo_rcbccr.png"
+                    alt="logo"
+                    className="h-16 w-16 md:h-24 md:w-28"
+                  />
                 </a>
 
                 <nav className="hidden md:flex space-x-6">
@@ -61,7 +65,7 @@ const Navbar = () => {
                     <a
                       key={item.name}
                       href={item.href}
-                      className="hover:text-[#745296] transition duration-300 ease-in-out"
+                      className="hover:text-[#024FF0] transition duration-300 ease-in-out"
                     >
                       {item.name}
                     </a>
@@ -77,7 +81,7 @@ const Navbar = () => {
                     {isOpen ? (
                       <X size={24} className="text-red-700" />
                     ) : (
-                      <Menu size={24} className="text-[#745296]" />
+                      <Menu size={24} className="text-[#FFF]" />
                     )}
                   </button>
                 </div>
@@ -93,7 +97,7 @@ const Navbar = () => {
             <a
               key={item.name}
               href={item.href}
-              className="block hover:text-[#745296] text-lg font-medium transition duration-300 ease-in-out"
+              className="block hover:text-[#024FF0] text-lg font-medium transition duration-300 ease-in-out"
               onClick={() => setIsOpen(false)}
             >
               {item.name}

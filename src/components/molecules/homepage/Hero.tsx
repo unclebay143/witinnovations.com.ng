@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import ParticleField from "@/components/atom/ParticleField";
+import Hero3D from "@/components/atom/Hero3D";
 
 interface HeroMessage {
   heading: string;
@@ -46,37 +48,38 @@ const Hero = () => {
   }, []);
 
   return (
-    <section
-      className="relative h-[90vh] flex items-center justify-center text-center px-4 bg-cover bg-center transition-all duration-1000"
-      style={{
-        backgroundImage: `url(${messages[index].backgroundImage})`,
-      }}
-    >
-      <div className="absolute inset-0 bg-black/40 bg-opacity-60 z-0" />
+    <section className="relative h-[80vh] bg-gradient-to-br from-[#252525] via-[#024FF0] to-[#252525] text-white overflow-hidden">
+      <Hero3D />
 
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={index}
-          className="max-w-3xl mx-auto z-10"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.8 }}
-        >
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
-            {messages[index].heading}
-          </h1>
-          <p className="text-lg md:text-xl text-white mb-6">
-            {messages[index].subtext}
-          </p>
-          <Link
-            href="/services"
-            className="inline-block px-6 py-3 bg-[#745296] hover:bg-[#523b69] text-white font-medium duration-300 ease-in-out transition"
+      <div className="absolute inset-0 bg-[#252525] z-0" />
+
+      <div className="relative max-w-6xl mx-auto px-4 z-10 h-full flex items-center justify-center">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -30 }}
+            transition={{ duration: 0.8 }}
+            className="text-center max-w-4xl mx-auto"
           >
-            Explore Our Services
-          </Link>
-        </motion.div>
-      </AnimatePresence>
+            <h1 className="text-4xl lg:text-6xl font-bold mb-6">
+              {messages[index].heading}
+            </h1>
+            <p className="text-xl lg:text-2xl mb-8 text-gray-200">
+              {messages[index].subtext}
+            </p>
+            <Link
+              href="/services"
+              className="inline-block px-6 font-medium  py-3 bg-[#024FF0] hover:bg-[#0285f0]  duration-300 ease-in-out transition"
+            >
+              Explore Our Services
+            </Link>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      <ParticleField />
     </section>
   );
 };

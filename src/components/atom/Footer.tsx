@@ -7,11 +7,11 @@ import CTA from "./CTA";
 
 export default function Footer() {
   return (
-    <footer className="relative bg-[#1a1d1d] text-white pt-44 h-[80v] mt-24">
+    <footer className="relative bg-[#252525] text-white pt-44 h-[80v] mt-24">
       <CTA />
       <div className="relative z-10 px-6 md:px-2 py-16 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 text-sm text-white">
         <div className="flex items-center">
-          <h1 className="rotate-[-90deg] tracking-widest font-bold text-[#523b69]">
+          <h1 className="rotate-[-90deg] tracking-widest font-bold text-[#024FF0]">
             CONTACT
           </h1>
           <div>
@@ -37,7 +37,7 @@ export default function Footer() {
                 <br />
                 <a
                   href="mailto:hello@witinnovations.com.ng"
-                  className="underline text-[#8ac4ff]"
+                  className="underline text-[#024FF0]"
                 >
                   hello@witinnovations.com.ng
                 </a>
@@ -65,10 +65,10 @@ export default function Footer() {
         <div>
           {/* <img src="" alt="WIT Innovations Logo" className="w-32 mb-4" /> */}
           <div className="flex gap-3 mt-4">
-            <BsTwitterX className="hover:text-[#523b69] h-6 w-6 cursor-pointer" />
-            <FaFacebookF className="hover:text-[#523b69] h-6 w-6 cursor-pointer" />
-            <FaLinkedinIn className="hover:text-[#523b69] h-6 w-6 cursor-pointer" />
-            <FaYoutube className="hover:text-[#523b69] h-6 w-6 cursor-pointer" />
+            <BsTwitterX className="hover:text-[#024FF0] h-6 w-6 cursor-pointer" />
+            <FaFacebookF className="hover:text-[#024FF0] h-6 w-6 cursor-pointer" />
+            <FaLinkedinIn className="hover:text-[#024FF0] h-6 w-6 cursor-pointer" />
+            <FaYoutube className="hover:text-[#024FF0] h-6 w-6 cursor-pointer" />
           </div>
         </div>
 
@@ -122,7 +122,7 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-      <div className="relative z-10 border-t border-[#523b69] max-w-6xl mx-auto text-center py-6 px-4 text-xs md:text-sm flex flex-col md:flex-row justify-between items-center">
+      <div className="relative z-10 border-t border-[#024FF0] max-w-6xl mx-auto text-center py-6 px-4 text-xs md:text-sm flex flex-col md:flex-row justify-between items-center">
         <span className="opacity-70">
           © {new Date().getFullYear()} WIT Innovations LTD. All rights reserved.
         </span>

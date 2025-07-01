@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const CTA = () => {
   return (
-    <div className="relative z-20 -mt-56 bg-[#745296] text-white py-12 px-6 md:px-20 shadow-xl  max-w-6xl mx-auto">
+    <div className="relative z-20 -mt-56 bg-[#024FF0] text-white py-12 rounded-md px-6 md:px-20 shadow-xl  max-w-6xl mx-auto">
       <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-6">
         <div>
           <h2 className="text-2xl md:text-3xl font-bold mb-2 leading-snug">
@@ -18,7 +18,7 @@ const CTA = () => {
         <div>
           <Link
             href="/contact"
-            className="bg-[#fefde5] text-[#523b69] hover:bg-amber-100 font-medium py-3 px-6 shadow transition"
+            className="bg-[#FFF] text-[#252525]  hover:bg-[#Fefefe] font-medium py-3 px-6 shadow transition"
           >
             Contact us
           </Link>

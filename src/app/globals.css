@@ -1,13 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --background: #eaeaea;
-  --foreground: #050404;
-  --primary: #745296;
+  --background: #ffffff;
+  --foreground: #252525;
+  --primary: #252525;
 }
 
 .text-primary {
   color: var(--primary);
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 @theme inline {
@@ -19,8 +27,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #eaeaea;
-    --foreground: #050404;
+    --background: #ffffff;
+    --foreground: #252525;
   }
 }
 

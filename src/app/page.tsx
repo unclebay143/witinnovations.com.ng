@@ -7,9 +7,9 @@ export default function Home() {
   return (
     <div className="">
       <Hero />
+      <ServicesSnapshot />
       <Intro />
       <WhyChooseUs />
-      <ServicesSnapshot />
     </div>
   );
 }
