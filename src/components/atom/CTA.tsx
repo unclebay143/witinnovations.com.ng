@@ -9,8 +9,8 @@ const CTA = () => {
           Ready to Transform Your Ideas?
         </h2>
         <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-          Let's collaborate to build innovative digital solutions that drive
-          your business forward with cutting-edge AI and web technologies.
+          Let&apos;s collaborate to build innovative digital solutions that
+          drive your business forward with cutting-edge AI and web technologies.
         </p>
         <Link href="/contact">
           <Button className="bg-[#024FF0] hover:bg-[#0240d4] hover:scale-105 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl">

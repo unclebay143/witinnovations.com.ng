@@ -277,9 +277,9 @@ const StorySection = () => {
               <p className="text-lg mb-6">
                 What started as a passion project has evolved into a
                 comprehensive technology consultancy that serves clients across
-                various industries. We believe that innovation isn't just about
-                using the latest tools—it's about applying the right technology
-                in the right way to solve real-world problems.
+                various industries. We believe that innovation isn&apos;t just
+                about using the latest tools—it&apos;s about applying the right
+                technology in the right way to solve real-world problems.
               </p>
               <p className="text-lg">
                 Today, WIT Innovations stands as a trusted partner for

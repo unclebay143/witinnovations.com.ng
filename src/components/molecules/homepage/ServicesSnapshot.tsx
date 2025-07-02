@@ -8,37 +8,37 @@ const services = [
     name: "Software Development",
     description: "Web and mobile apps tailored to your business goals.",
     image:
-      "https://images.unsplash.com/photo-1579403124614-197f69d8187b?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://res.cloudinary.com/dcgghkk7q/image/upload/v1751465226/software_i7tx90.jpg",
   },
   {
     name: "AI Training & Education",
     description: "Empowering individuals and institutions with AI knowledge.",
     image:
-      "https://images.unsplash.com/photo-1716637644831-e046c73be197?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fEFJfGVufDB8fDB8fHww",
+      "https://res.cloudinary.com/dcgghkk7q/image/upload/v1751465226/ai-training_vo33xz.jpg",
   },
   {
     name: "Technology Consulting",
     description: "Guiding strategy, architecture, and implementation.",
     image:
-      "https://images.unsplash.com/photo-1599453052061-5c377643e4fa?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGNvbnN1bHRpbmd8ZW58MHx8MHx8fDA%3D",
+      "https://res.cloudinary.com/dcgghkk7q/image/upload/v1751465226/aaa_q0slnr.jpg",
   },
   {
     name: "Cloud & Infrastructure",
     description: "Scalable and secure infrastructure to support your growth.",
     image:
-      "https://media.istockphoto.com/id/2148123501/photo/big-data-structure-blocks-concept.webp?a=1&b=1&s=612x612&w=0&k=20&c=v8jlOwEGSyIaWJJ1h2TM1bdfxh41odhF9XnMtk8WuyQ=",
+      "https://res.cloudinary.com/dcgghkk7q/image/upload/v1751465996/cloud_ma9xtg.png",
   },
   {
     name: "Digital Transformation",
     description: "Modernizing processes with digital-first solutions.",
     image:
-      "https://plus.unsplash.com/premium_photo-1683836722388-8643468c327d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8RGlnaXRhbHxlbnwwfHwwfHx8MA%3D%3D",
+      "https://res.cloudinary.com/dcgghkk7q/image/upload/v1751465996/digital_x17tvz.jpg",
   },
   {
     name: "AI-Powered Automation",
     description: "Streamlining operations with intelligent automation.",
     image:
-      "https://plus.unsplash.com/premium_photo-1683836722388-8643468c327d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8RGlnaXRhbHxlbnwwfHwwfHx8MA%3D%3D",
+      "https://res.cloudinary.com/dcgghkk7q/image/upload/v1751465996/ai-power_suyi0a.jpg",
   },
 ];
 

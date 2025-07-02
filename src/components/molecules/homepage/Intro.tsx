@@ -45,11 +45,12 @@ const Intro = () => {
               ever-evolving digital landscape. With a strong foundation in
               emerging technologies and user-centered design, we build tools and
               systems that are not only intelligent but also practical and
-              scalable. Whether you're in healthcare, education, logistics, or
-              beyond, our solutions are built to meet your challenges and fuel
-              your success. We don&apos;t just solve problems—we collaborate
-              with you to uncover new opportunities, ensuring every solution is
-              secure, efficient, and aligned with your long-term goals.
+              scalable. Whether you&apos;re in healthcare, education, logistics,
+              or beyond, our solutions are built to meet your challenges and
+              fuel your success. We don&apos;t just solve problems—we
+              collaborate with you to uncover new opportunities, ensuring every
+              solution is secure, efficient, and aligned with your long-term
+              goals.
             </p>
           </div>
         </section>
