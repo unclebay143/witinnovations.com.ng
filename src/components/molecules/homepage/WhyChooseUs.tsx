@@ -48,7 +48,7 @@ const cardVariants = {
     opacity: 0,
     x: i % 2 === 0 ? -50 : 50,
   }),
-  visible: (_i: number) => ({
+  visible: () => ({
     opacity: 1,
     x: 0,
     transition: {

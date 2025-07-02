@@ -1,18 +1,18 @@
 "use client";
 
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, useThree, extend } from "@react-three/fiber";
 import { Plane, shaderMaterial } from "@react-three/drei";
-import { extend, useThree } from "@react-three/fiber";
 import { useRef } from "react";
 import * as THREE from "three";
 
+// Create a custom shader material
 const WaveShaderMaterial = shaderMaterial(
   {
     uTime: 0,
     uColor: new THREE.Color(0.2, 0.4, 0.8),
     uResolution: new THREE.Vector2(1, 1),
   },
-  // vertex shader
+  // Vertex Shader
   `
     varying vec2 vUv;
     varying float vWave;
@@ -31,7 +31,7 @@ const WaveShaderMaterial = shaderMaterial(
       gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
     }
   `,
-  // fragment shader
+  // Fragment Shader
   `
     varying vec2 vUv;
     varying float vWave;
@@ -43,19 +43,24 @@ const WaveShaderMaterial = shaderMaterial(
       float wave = vWave * 2.0;
       vec3 color = uColor + wave;
       
+      // gradient from light at top to dark at bottom
       float gradient = smoothstep(0.0, 1.0, vUv.y);
-      color = mix(color, vec3(0.1, 0.2, 0.4), gradient);
+      color = mix(color, vec3(0.05, 0.05, 0.1), gradient); // darker at bottom
       
       gl_FragColor = vec4(color, 0.8);
     }
   `
 );
 
+// Register the shader
 extend({ WaveShaderMaterial });
+
+// Infer the type of the material
+type WaveMaterialImpl = typeof WaveShaderMaterial;
 
 function AnimatedPlane() {
   const meshRef = useRef<THREE.Mesh>(null);
-  const materialRef = useRef<any>(null);
+  const materialRef = useRef<InstanceType<WaveMaterialImpl> | null>(null);
   const { size } = useThree();
 
   useFrame((state) => {
@@ -79,7 +84,7 @@ function AnimatedPlane() {
 
 export default function InteractiveBackground() {
   return (
-    <div className="absolute inset-0 w-full h-full">
+    <div className="absolute inset-0 w-full h-full z-0">
       <Canvas camera={{ position: [0, 0, 5] }}>
         <AnimatedPlane />
       </Canvas>

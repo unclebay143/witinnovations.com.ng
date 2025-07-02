@@ -100,7 +100,7 @@ function ShootingStars() {
           ]}
         >
           <sphereGeometry args={[0.02, 8, 8]} />
-          <meshBasicMaterial color="white" transparent opacity={0.6} />
+          <meshBasicMaterial color="blue" transparent opacity={1} />
         </mesh>
       ))}
     </group>
@@ -114,7 +114,7 @@ export default function Component() {
         {/* Base image */}
         <div className="absolute inset-0">
           <Image
-            src="https://res.cloudinary.com/dcgghkk7q/image/upload/v1751383514/photo-1535223289827-42f1e9919769__1_-removebg-preview_uh6zxb.png"
+            src="https://res.cloudinary.com/dcgghkk7q/image/upload/v1751483632/VR_y0uxoh.png"
             alt="vision"
             fill
             className="object-cover"

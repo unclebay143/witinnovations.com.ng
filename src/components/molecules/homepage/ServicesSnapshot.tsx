@@ -32,7 +32,7 @@ const services = [
     name: "Digital Transformation",
     description: "Modernizing processes with digital-first solutions.",
     image:
-      "https://res.cloudinary.com/dcgghkk7q/image/upload/v1751465996/digital_x17tvz.jpg",
+      "https://res.cloudinary.com/dcgghkk7q/image/upload/v1751467969/dig_prcfp3.jpg",
   },
   {
     name: "AI-Powered Automation",
@@ -70,7 +70,7 @@ export default function IndustriesSection() {
                 className="object-cover"
               />
               {hovered === index && (
-                <div className="absolute inset-0 bg-black/60 text-white p-4 flex flex-col justify-end">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-black/0 text-white p-4 flex flex-col justify-end">
                   <h3 className="text-lg font-bold">{service.name}</h3>
                   <p className="text-sm">{service.description}</p>
                 </div>

@@ -202,6 +202,7 @@ export default function Footer() {
                 <br />
                 <a
                   href="mailto:hello@witinnovations.com.ng"
+                  target="blank"
                   className="underline text-[#024FF0] hover:text-cyan-400 transition-colors duration-300"
                 >
                   hello@witinnovations.com.ng
@@ -213,7 +214,7 @@ export default function Footer() {
         <div className="w-full h-80 md:h-full">
           <div className="relative overflow-hidden rounded-lg shadow-2xl">
             <img
-              src="https://images.unsplash.com/photo-1706823871410-ed8b01faef7e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHdvcmxkJTIwbWFwfGVufDB8fDB8fHww"
+              src="https://res.cloudinary.com/dcgghkk7q/image/upload/v1751471840/world-map_sgmnly.jpg"
               alt="World Map"
               className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
             />
@@ -255,36 +256,36 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a
+              <Link
                 href="/about"
                 className="hover:underline hover:text-[#024FF0] transition-all duration-300 drop-shadow-sm"
               >
                 About Us
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="/services"
                 className="hover:underline hover:text-[#024FF0] transition-all duration-300 drop-shadow-sm"
               >
                 Services
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="/projects"
                 className="hover:underline hover:text-[#024FF0] transition-all duration-300 drop-shadow-sm"
               >
                 Past Projects
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="/contact"
                 className="hover:underline hover:text-[#024FF0] transition-all duration-300 drop-shadow-sm"
               >
                 Contact
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

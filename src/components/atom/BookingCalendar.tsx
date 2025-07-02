@@ -81,7 +81,7 @@ const BookingCalendar = () => {
       } else {
         alert("Failed to send booking. Please try again.");
       }
-    } catch (error) {
+    } catch {
       alert("An error occurred. Please try again.");
     } finally {
       setIsSubmitting(false);

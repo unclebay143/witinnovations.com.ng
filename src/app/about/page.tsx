@@ -11,8 +11,8 @@ export default function Page() {
       <MissionVision />
       <OurPhilosophy />
       <div className="py-16 text-center opacity-10  font-bold">
-        <p>TALK TO US ABOUT YOUR IDEA AND LETS US GET THE WORK DONE</p>
-        <p className="italic">WE CAN ALSO THINK FOR YOU</p>
+        <p>TALK TO US ABOUT YOUR IDEA AND LETS US GET THE WORK DONE!</p>
+        <p className="italic">WE CAN ALSO THINK FOR YOU...</p>
       </div>
     </main>
   );

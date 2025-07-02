@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import Link from "next/link";
 
 interface NavItem {
   name: string;
@@ -52,23 +53,23 @@ const Navbar = () => {
           >
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 font-medium">
               <div className="flex justify-between items-center h-[106px]">
-                <a href="/">
+                <Link href="/">
                   <img
                     src="https://res.cloudinary.com/dcgghkk7q/image/upload/v1751380639/WIT-logo_rcbccr.png"
                     alt="logo"
                     className="h-16 w-16 md:h-24 md:w-28"
                   />
-                </a>
+                </Link>
 
                 <nav className="hidden md:flex space-x-6">
                   {navItems.map((item) => (
-                    <a
+                    <Link
                       key={item.name}
                       href={item.href}
                       className="hover:text-[#024FF0] transition duration-300 ease-in-out"
                     >
                       {item.name}
-                    </a>
+                    </Link>
                   ))}
                 </nav>
 
@@ -94,14 +95,14 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden h-screen pt-24 px-6 space-y-6">
           {navItems.map((item) => (
-            <a
+            <Link
               key={item.name}
               href={item.href}
               className="block hover:text-[#024FF0] text-lg font-medium transition duration-300 ease-in-out"
               onClick={() => setIsOpen(false)}
             >
               {item.name}
-            </a>
+            </Link>
           ))}
         </div>
       )}
