@@ -1,23 +1,19 @@
 "use client";
 
-import { motion } from "framer-motion";
-
 const AboutHero = () => {
   return (
-    <section className="px-6 md:px-20 py-16">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="max-w-4xl mx-auto text-center"
-      >
-        <h1 className="text-3xl md:text-4xl font-bold mb-4 text-[#745296]">
-          About Us
-        </h1>
-        <p className="opacity-80">
-          Discover the story, vision, and people driving WIT Innovations.
-        </p>
-      </motion.div>
+    <section className="bg-gradient-to-br from-slate-900 to-blue-900 text-white py-20">
+      <div className="container mx-auto px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="text-4xl lg:text-5xl font-bold mb-6">
+            About WIT Innovations
+          </h1>
+          <p className="text-xl text-gray-200">
+            Pioneering the future of technology through innovation, expertise,
+            and unwavering commitment to excellence.
+          </p>
+        </div>
+      </div>
     </section>
   );
 };
