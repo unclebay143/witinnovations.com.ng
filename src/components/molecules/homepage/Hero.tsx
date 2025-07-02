@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import ParticleField from "@/components/atom/ParticleField";
 import Hero3D from "@/components/atom/Hero3D";
+import { Button } from "@/components/ui/button";
 
 interface HeroMessage {
   heading: string;
@@ -69,11 +70,10 @@ const Hero = () => {
             <p className="text-xl lg:text-2xl mb-8 text-gray-200">
               {messages[index].subtext}
             </p>
-            <Link
-              href="/services"
-              className="inline-block px-6 font-medium  py-3 bg-[#024FF0] hover:bg-[#0285f0]  duration-300 ease-in-out transition"
-            >
-              Explore Our Services
+            <Link href="/services">
+              <Button className="mt-4 bg-[#024FF0] hover:bg-[#0285f0] text-white">
+                Explore Our Services
+              </Button>
             </Link>
           </motion.div>
         </AnimatePresence>

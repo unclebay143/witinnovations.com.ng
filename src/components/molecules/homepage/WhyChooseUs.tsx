@@ -1,4 +1,5 @@
 "use client";
+
 import {
   Lightbulb,
   Users,
@@ -7,6 +8,7 @@ import {
   Repeat,
   Lock,
 } from "lucide-react";
+import { motion } from "framer-motion";
 
 const features = [
   {
@@ -41,26 +43,53 @@ const features = [
   },
 ];
 
+const cardVariants = {
+  hidden: (i: number) => ({
+    opacity: 0,
+    x: i % 2 === 0 ? -50 : 50,
+  }),
+  visible: (i: number) => ({
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.42, 0, 0.58, 1] as [number, number, number, number],
+    },
+  }),
+};
+
 const WhyChooseUs = () => {
   return (
     <section
-      className="min-h-screen flex flex-col justify-center items-center px-6 text-center text-white bg-[#252525]"
+      className="min-h-screen flex flex-col justify-center items-center p-6 text-center text-white bg-[#252525]"
       id="why"
     >
       <div className="max-w-6xl w-full">
-        <h2 className="text-3xl md:text-4xl font-bold mb-10">
+        <motion.h2
+          className="text-3xl md:text-4xl font-bold mb-10"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           Why Choose WIT Innovations?
-        </h2>
+        </motion.h2>
+
         <div className="grid grid-cols-1 md:grid-cols-3 md:gap-16 gap-8">
           {features.map((feature, idx) => (
-            <div
+            <motion.div
               key={idx}
+              custom={idx}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={cardVariants}
               className="flex flex-col items-left text-left px-4 bg-[#333131] p-6 rounded-md"
             >
               <div className="mb-4">{feature.icon}</div>
               <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
               <p className="opacity-70">{feature.text}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -29,8 +29,8 @@ const Intro = () => {
         />
       </motion.div>
       <div className="relative  overflow-hidden">
-        <section className=" flex flex-col md:flex-row justify-center items-center gap-16 mt-2  max-w-6xl mx-auto">
-          <div className="md:w-[60%] ">
+        <section className=" flex flex-col md:flex-row justify-center items-center md:gap-16 mt-2  max-w-6xl mx-auto">
+          <div className="w-full md:w-[60%] ">
             <VrLightAnimation />
           </div>
           <div>
