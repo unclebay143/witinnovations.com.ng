@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
@@ -13,7 +13,7 @@ interface NavItem {
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(true);
-  let scrollTimeout: NodeJS.Timeout;
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -28,13 +28,22 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       setShowNavbar(false);
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => setShowNavbar(true), 500);
+
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+
+      scrollTimeoutRef.current = setTimeout(() => {
+        setShowNavbar(true);
+      }, 500);
     };
 
     window.addEventListener("scroll", handleScroll);
+
     return () => {
-      clearTimeout(scrollTimeout);
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);

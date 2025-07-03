@@ -248,12 +248,12 @@ export default function Footer() {
           </h4>
           <ul className="space-y-4 opacity-80">
             <li>
-              <a
+              <Link
                 href="/"
                 className="hover:underline hover:text-[#024FF0] transition-all duration-300 drop-shadow-sm"
               >
                 Home
-              </a>
+              </Link>
             </li>
             <li>
               <Link

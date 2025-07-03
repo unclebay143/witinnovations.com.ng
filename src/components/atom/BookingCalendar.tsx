@@ -299,7 +299,7 @@ const BookingCalendar = () => {
                         id="project"
                         required
                         value={formData.projectDescription}
-                        onChange={(e: any) =>
+                        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
                           handleInputChange(
                             "projectDescription",
                             e.target.value
