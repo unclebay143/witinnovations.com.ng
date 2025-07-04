@@ -36,7 +36,6 @@ export const ContactForm = () => {
     <section className="py-20">
       <div className="max-w-6xl mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
           <div className="bg-white p-8 rounded-lg shadow-lg">
             <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
             <form onSubmit={handleSubmit} className="space-y-6">

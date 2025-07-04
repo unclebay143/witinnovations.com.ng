@@ -5,14 +5,12 @@ import { Plane, shaderMaterial } from "@react-three/drei";
 import { useRef } from "react";
 import * as THREE from "three";
 
-// Create a custom shader material
 const WaveShaderMaterial = shaderMaterial(
   {
     uTime: 0,
     uColor: new THREE.Color(0.2, 0.4, 0.8),
     uResolution: new THREE.Vector2(1, 1),
   },
-  // Vertex Shader
   `
     varying vec2 vUv;
     varying float vWave;
@@ -31,7 +29,6 @@ const WaveShaderMaterial = shaderMaterial(
       gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
     }
   `,
-  // Fragment Shader
   `
     varying vec2 vUv;
     varying float vWave;
@@ -52,7 +49,6 @@ const WaveShaderMaterial = shaderMaterial(
   `
 );
 
-// Register the shader
 extend({ WaveShaderMaterial });
 
 // Infer the type of the material

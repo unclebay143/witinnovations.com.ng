@@ -38,7 +38,6 @@ const OurPhilosophy = () => {
 
   return (
     <div>
-      {/* Our Philosophy Section */}
       <section className="max-w-5xl mx-auto px-6 md:px-20 py-32 text-[#eaeaea] bg-[#252525] rounded-md text-center mt-16">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -54,7 +53,6 @@ const OurPhilosophy = () => {
         </motion.div>
       </section>
 
-      {/* Our Approach with Timeline */}
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
@@ -63,7 +61,6 @@ const OurPhilosophy = () => {
             </h2>
 
             <div className="grid md:grid-cols-2 gap-12 items-start">
-              {/* Timeline Section */}
               <div className="relative">
                 <div className="after:absolute after:inset-y-0 after:w-px after:bg-gray-300 relative pl-8 after:left-3 space-y-8">
                   {timelineSteps.map((step, index) => (
@@ -93,7 +90,6 @@ const OurPhilosophy = () => {
                 </div>
               </div>
 
-              {/* Why This Matters Section */}
               <div className="bg-gradient-to-br from-blue-50 to-indigo-100 p-8 rounded-2xl">
                 <h4 className="text-xl font-semibold mb-4">Why This Matters</h4>
                 <ul className="space-y-3 ">

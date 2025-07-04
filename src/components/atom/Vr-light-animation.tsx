@@ -111,7 +111,6 @@ export default function Component() {
   return (
     <div className="min-h-screen  flex items-center justify-center p-8">
       <div className="relative w-full max-w-2xl aspect-[3/4] overflow-hidden rounded-2xl">
-        {/* Base image */}
         <div className="absolute inset-0">
           <Image
             src="https://res.cloudinary.com/dcgghkk7q/image/upload/v1751483632/VR_y0uxoh.png"
@@ -122,11 +121,10 @@ export default function Component() {
           />
         </div>
 
-        {/* 3D Star field overlay - positioned in vision area */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            clipPath: "ellipse(200px 150px at 50% 35%)", // Vision-focused area
+            clipPath: "ellipse(200px 150px at 50% 35%)",
           }}
         >
           <Canvas
@@ -140,16 +138,12 @@ export default function Component() {
               background: "transparent",
             }}
           >
-            {/* Ambient lighting for stars */}
             <ambientLight intensity={0.5} />
 
-            {/* Main star field */}
             <StarField />
 
-            {/* Shooting stars */}
             <ShootingStars />
 
-            {/* Distant nebula effect */}
             <mesh position={[0, 0, -15]}>
               <planeGeometry args={[30, 30]} />
               <meshBasicMaterial color="#1a0033" transparent opacity={0.3} />
@@ -157,7 +151,6 @@ export default function Component() {
           </Canvas>
         </div>
 
-        {/* Vision area indicator */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{

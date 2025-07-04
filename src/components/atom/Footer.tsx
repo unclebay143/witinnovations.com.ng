@@ -10,7 +10,6 @@ export default function Footer() {
     <footer className="relative bg-[#1e1e1e] text-white pt-44 min-h-screen mt-24 ">
       <CTA />
 
-      {/* Animated Video Background */}
       <div className="absolute inset-0 opacity-15 pointer-events-none">
         <video
           autoPlay
@@ -30,7 +29,6 @@ export default function Footer() {
           Your browser does not support the video tag.
         </video>
 
-        {/* Fallback background image */}
         <div
           className="w-full h-full bg-cover bg-center hidden"
           style={{
@@ -39,19 +37,15 @@ export default function Footer() {
           }}
         />
 
-        {/* Tech overlay effects */}
         <div className="absolute inset-0">
-          {/* Animated gradient overlay for depth */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#252525] via-transparent to-transparent opacity-60" />
 
-          {/* Floating tech particles */}
           <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-[#024FF0] rounded-full animate-pulse opacity-40"></div>
           <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-cyan-400 rounded-full animate-ping opacity-50"></div>
           <div className="absolute bottom-1/4 left-1/3 w-3 h-3 bg-purple-400 rounded-full animate-bounce opacity-30"></div>
           <div className="absolute top-1/2 right-1/4 w-2 h-2 bg-green-400 rounded-full animate-pulse opacity-35"></div>
           <div className="absolute top-3/4 left-1/2 w-1 h-1 bg-yellow-400 rounded-full animate-ping opacity-40"></div>
 
-          {/* Digital grid overlay */}
           <div
             className="absolute inset-0 opacity-8"
             style={{
@@ -63,7 +57,6 @@ export default function Footer() {
             }}
           />
 
-          {/* Animated connection lines */}
           <svg
             className="absolute inset-0 w-full h-full opacity-15"
             xmlns="http://www.w3.org/2000/svg"
@@ -93,7 +86,6 @@ export default function Footer() {
               </linearGradient>
             </defs>
 
-            {/* Flowing data lines */}
             <path
               d="M0,150 Q300,100 600,150 T1200,150"
               stroke="url(#lineGradient1)"
@@ -118,7 +110,6 @@ export default function Footer() {
               style={{ animationDelay: "3s" }}
             />
 
-            {/* Network nodes */}
             <circle
               cx="200"
               cy="150"
@@ -153,7 +144,6 @@ export default function Footer() {
             />
           </svg>
 
-          {/* Floating code snippets effect */}
           <div className="absolute top-1/6 right-1/6 opacity-20 text-xs font-mono text-[#024FF0] animate-pulse">
             {"<AI />"}
           </div>

@@ -147,7 +147,6 @@ const BookingCalendar = () => {
           <p className="text-2xl">Let&apos;s Talk!</p>
         </div>
 
-        {/* Booking Interface */}
         <AnimatePresence mode="wait">
           {!showForm && !isSubmitted && (
             <motion.div
@@ -170,7 +169,6 @@ const BookingCalendar = () => {
               </h3>
               <p className="text-center text-xl font-bold mb-6">July 2025</p>
 
-              {/* Calendar Grid */}
               <div className="grid grid-cols-7 gap-2 text-center text-sm mb-4">
                 {days.map((day) => (
                   <span key={day} className="font-medium">
@@ -196,7 +194,6 @@ const BookingCalendar = () => {
                 })}
               </div>
 
-              {/* Time Selection */}
               <AnimatePresence>
                 {selectedDate && (
                   <motion.div

@@ -1,4 +1,5 @@
 "use client";
+
 import { motion } from "framer-motion";
 
 const processSteps = [
@@ -20,7 +21,7 @@ const processSteps = [
     step: 3,
     title: "Implementation",
     description:
-      "Our expert team executes the solution with precision and quality.",
+      "Our expert team executes the solution with precision and quality using the best technologies.",
     color: "bg-purple-600",
   },
   {
@@ -37,8 +38,8 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.3,
-      delayChildren: 0.2,
+      staggerChildren: 0.8,
+      delayChildren: 0.5,
     },
   },
 };
@@ -46,30 +47,37 @@ const containerVariants = {
 const stepVariants = {
   hidden: {
     opacity: 0,
-    y: 50,
-    scale: 0.8,
+    y: 60,
+    scale: 0.7,
   },
   visible: {
     opacity: 1,
     y: 0,
     scale: 1,
     transition: {
-      duration: 0.6,
+      duration: 0.8,
       type: "spring" as const,
-      stiffness: 100,
+      stiffness: 80,
+      damping: 12,
     },
   },
 };
 
 const circleVariants = {
-  hidden: { scale: 0, rotate: -180 },
+  hidden: {
+    scale: 0,
+    rotate: -180,
+    opacity: 0,
+  },
   visible: {
     scale: 1,
     rotate: 0,
+    opacity: 1,
     transition: {
-      duration: 0.5,
+      duration: 0.6,
       type: "spring" as const,
       stiffness: 120,
+      delay: 0.2,
     },
   },
   hover: {
@@ -87,10 +95,29 @@ const lineVariants = {
   visible: {
     scaleX: 1,
     transition: {
-      duration: 1.5,
+      duration: 2.5,
       type: "tween" as const,
       ease: [0.25, 0.46, 0.45, 0.94] as const,
-      delay: 0.5,
+      delay: 1.0,
+    },
+  },
+};
+
+const numberVariants = {
+  hidden: {
+    opacity: 0,
+    scale: 0,
+    rotate: -90,
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    rotate: 0,
+    transition: {
+      delay: 0.3,
+      duration: 0.4,
+      type: "spring" as const,
+      stiffness: 200,
     },
   },
 };
@@ -108,9 +135,7 @@ const OurProcess = () => {
           <h2 className="text-3xl lg:text-4xl font-bold text-center mb-16">
             Our Process
           </h2>
-
           <div className="relative">
-            {/* Horizontal connecting line */}
             <motion.div
               variants={lineVariants}
               initial="hidden"
@@ -120,13 +145,12 @@ const OurProcess = () => {
               style={{ top: "200px" }}
             />
 
-            {/* Process steps */}
             <motion.div
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-50px" }}
-              className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4 relative"
+              className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-6 relative"
             >
               {processSteps.map(
                 ({ step, title, description, color }, index) => (
@@ -135,49 +159,53 @@ const OurProcess = () => {
                     variants={stepVariants}
                     className="flex flex-col items-center text-center relative"
                   >
-                    {/* Content above the line */}
                     <div className="mb-8 md:mb-12">
                       <motion.h4
                         className="text-lg font-semibold mb-2"
-                        initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{
+                          duration: 0.5,
+                          delay: 0.5 + index * 0.8,
+                        }}
                       >
                         {title}
                       </motion.h4>
                       <motion.p
                         className="opacity-70 text-sm max-w-xs"
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        transition={{ delay: 0.4 + index * 0.1 }}
+                        initial={{ opacity: 0, y: 15 }}
+                        whileInView={{ opacity: 0.7, y: 0 }}
+                        transition={{
+                          delay: 0.7 + index * 0.8,
+                          duration: 0.4,
+                        }}
                       >
                         {description}
                       </motion.p>
                     </div>
 
-                    {/* Circle on the line */}
                     <motion.div
                       variants={circleVariants}
                       whileHover="hover"
                       className={`w-16 h-16 ${color} text-white rounded-full flex items-center justify-center text-xl font-bold cursor-pointer shadow-lg relative z-10 border-4 border-white`}
                     >
                       <motion.span
-                        initial={{ opacity: 0, scale: 0 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.6 + index * 0.1 }}
+                        variants={numberVariants}
+                        className="font-bold"
                       >
                         {step}
                       </motion.span>
                     </motion.div>
 
-                    {/* Connecting line segment for mobile */}
                     {index < processSteps.length - 1 && (
                       <motion.div
-                        initial={{ scaleY: 0 }}
-                        whileInView={{ scaleY: 1 }}
+                        initial={{ scaleY: 0, opacity: 0 }}
+                        whileInView={{ scaleY: 1, opacity: 1 }}
                         transition={{
-                          delay: 0.8 + index * 0.1,
-                          duration: 0.5,
+                          delay: 1.2 + index * 0.8,
+                          duration: 0.6,
+                          type: "spring",
+                          stiffness: 100,
                         }}
                         className={`md:hidden w-1 h-16 ${color} mt-4 origin-top`}
                       />

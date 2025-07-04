@@ -29,7 +29,6 @@ const StorySection = () => {
               >
                 <div className="absolute top-1/2 left-1/2 w-6 h-6 bg-blue-600 rounded-full animate-central-grow"></div>
 
-                {/* Connection Lines */}
                 <svg
                   className="absolute inset-0 w-full h-full"
                   viewBox="0 0 320 400"
@@ -230,7 +229,6 @@ const StorySection = () => {
                   style={{ top: "35%", right: "5%" }}
                 ></div>
 
-                {/* Data Flow Particles */}
                 <div className="absolute w-1 h-1 bg-blue-400 rounded-full animate-particle-1"></div>
                 <div className="absolute w-1 h-1 bg-green-400 rounded-full animate-particle-2"></div>
                 <div className="absolute w-1 h-1 bg-amber-400 rounded-full animate-particle-3"></div>
@@ -242,7 +240,6 @@ const StorySection = () => {
               </div>
             </div>
 
-            {/* Text Content - Hidden on mobile, shown on desktop */}
             <div className="flex-1 max-w-none opacity-70 hidden lg:block px-4">
               <p className="text-lg mb-6">
                 WIT Innovations LTD was founded with a simple yet powerful
@@ -268,7 +265,6 @@ const StorySection = () => {
             </div>
           </div>
 
-          {/* Text Content for Mobile - Shown below animation */}
           <div className="lg:hidden px-4 py-8 opacity-70">
             <p className="text-base mb-4">
               WIT Innovations LTD was founded with a simple yet powerful vision:

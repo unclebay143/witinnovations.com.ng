@@ -8,7 +8,7 @@ const CTA = () => {
         <h2 className="text-3xl md:text-4xl font-bold text-[#252525] mb-4">
           Ready to Transform Your Ideas?
         </h2>
-        <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+        <p className="opacity-700 mb-6 max-w-2xl mx-auto">
           Let&apos;s collaborate to build innovative digital solutions that
           drive your business forward with cutting-edge AI and web technologies.
         </p>
