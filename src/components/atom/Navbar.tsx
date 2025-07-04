@@ -25,16 +25,13 @@ const Navbar = () => {
     { name: "Contact", href: "/contact" },
   ];
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (isOpen) {
-      // Prevent scrolling
       document.body.style.overflow = "hidden";
       document.body.style.position = "fixed";
       document.body.style.top = `-${window.scrollY}px`;
       document.body.style.width = "100%";
     } else {
-      // Re-enable scrolling
       const scrollY = document.body.style.top;
       document.body.style.overflow = "";
       document.body.style.position = "";
@@ -45,7 +42,6 @@ const Navbar = () => {
       }
     }
 
-    // Cleanup function
     return () => {
       document.body.style.overflow = "";
       document.body.style.position = "";
