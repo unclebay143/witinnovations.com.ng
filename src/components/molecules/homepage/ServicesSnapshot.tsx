@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { ArrowBigRight, ArrowRight } from "lucide-react";
 
 const services = [
   {
@@ -78,6 +79,9 @@ export default function IndustriesSection() {
             </div>
           ))}
         </div>
+        <p className="text-lg text-[#024FF0] flex gap-1 items-center">
+          Scroll to view more <ArrowRight />
+        </p>
       </div>
     </section>
   );
