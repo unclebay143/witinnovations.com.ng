@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import { Logo } from "./Logo";
 
 interface NavItem {
   name: string;
@@ -85,11 +86,7 @@ const Navbar = () => {
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-0 font-medium">
               <div className="flex justify-between items-center h-[106px]">
                 <Link href="/">
-                  <img
-                    src="https://res.cloudinary.com/dcgghkk7q/image/upload/v1751380639/WIT-logo_rcbccr.png"
-                    alt="logo"
-                    className="h-16 w-16 md:h-24 md:w-28"
-                  />
+                  <Logo />
                 </Link>
                 <nav className="hidden md:flex space-x-6">
                   {navItems.map((item) => (

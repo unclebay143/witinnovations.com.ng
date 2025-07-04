@@ -79,7 +79,7 @@ export default function IndustriesSection() {
             </div>
           ))}
         </div>
-        <p className="text-lg text-[#024FF0] flex gap-1 items-center">
+        <p className="text-lg text-[#024FF0] flex gap-1 items-center md:hidden">
           Scroll to view more <ArrowRight />
         </p>
       </div>
