@@ -48,7 +48,8 @@ const testimonials = [
     name: "David Thompson",
     title: "Founder",
     company: "StartupHub",
-    avatar: "/placeholder.svg?height=60&width=60",
+    avatar:
+      "https://res.cloudinary.com/dcgghkk7q/image/upload/v1741328498/photo-1508002366005-75a695ee2d17_x1qmzh.png",
     rating: 5,
   },
 ];

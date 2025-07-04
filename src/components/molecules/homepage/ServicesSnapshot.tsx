@@ -53,7 +53,7 @@ export default function IndustriesSection() {
           From strategy to execution, we help you thrive with transformative
           technology solutions.
         </p>
-        <div className="flex gap-3 justify-start items-center overflow-x-auto flex-nowrap scrollbar-hide sm:justify-center">
+        <div className="flex gap-3 justify-start items-center overflow-x-auto flex-nowrap scrollbar-hide sm:justify-center ">
           {services.map((service, index) => (
             <div
               key={index}

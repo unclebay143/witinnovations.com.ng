@@ -29,7 +29,7 @@ const Partners = () => {
   ];
   return (
     <div className="max-w-5xl mx-auto px-4 my-20">
-      <h3 className="text-xl font-semibold text-center mb-8 text-muted-foreground">
+      <h3 className="text-3xl font-bold tracking-tight mb-6 text-center ">
         Trusted by Leading Companies
       </h3>
       <Marquee speed={50} pauseOnHover={false}>

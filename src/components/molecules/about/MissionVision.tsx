@@ -38,13 +38,13 @@ const MissionVision = () => {
   return (
     <section className="relative py-20 bg-[#E5E5E5] overflow-hidden">
       <InteractiveBackground />
-      <div className="relative container mx-auto px-4 z-10">
+      <div className="relative max-w-6xl mx-auto px-4 z-10">
         <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {cardData.map((card, index) => {
             const Icon = card.icon;
             return (
               <AnimatedCard key={index} delay={card.delay}>
-                <div className="bg-white p-8 rounded-lg shadow-lg text-center transform hover:scale-105 transition-all duration-300">
+                <div className="bg-white h-full p-8 rounded-lg shadow-lg text-center transform hover:scale-105 transition-all duration-300">
                   <div
                     className={`w-16 h-16 ${card.bgColor} rounded-full flex items-center justify-center mx-auto mb-6`}
                   >

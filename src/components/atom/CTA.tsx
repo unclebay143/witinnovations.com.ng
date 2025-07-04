@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const CTA = () => {
   return (
-    <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white/95 backdrop-blur-sm rounded-xl shadow-2xl p-8 max-w-4xl mx-auto z-20 border border-white/20">
+    <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white/95 backdrop-blur-sm rounded-xl shadow-2xl p-8 w-[90%] md:max-w-4xl mx-auto z-20 border border-white/20">
       <div className="text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-[#252525] mb-4">
           Ready to Transform Your Ideas?

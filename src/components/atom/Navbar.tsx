@@ -60,7 +60,7 @@ const Navbar = () => {
             transition={{ duration: 0.7, ease: "easeInOut" }}
             className="fixed top-0 left-0 w-full z-50 bg-[#252525] text-white hadow-md"
           >
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 font-medium">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-0 font-medium">
               <div className="flex justify-between items-center h-[106px]">
                 <Link href="/">
                   <img
@@ -102,12 +102,12 @@ const Navbar = () => {
       </AnimatePresence>
 
       {isOpen && (
-        <div className="md:hidden h-screen pt-24 px-6 space-y-6">
+        <div className="md:hidden h-screen pt-24 px-4 space-y-6">
           {navItems.map((item) => (
             <Link
               key={item.name}
               href={item.href}
-              className="block hover:text-[#024FF0] text-lg font-medium transition duration-300 ease-in-out"
+              className="block hover:text-[#024FF0] text-lg font-medium transition duration-300 mt-6 ease-in-out"
               onClick={() => setIsOpen(false)}
             >
               {item.name}

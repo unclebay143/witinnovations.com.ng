@@ -132,3 +132,341 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* OUR STORY ANIMATIONS */
+/* Add these animations to your global CSS file */
+
+/* Central node animations */
+@keyframes central-grow {
+  0% {
+    transform: translate(-50%, -50%) scale3d(0, 0, 1);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale3d(1, 1, 1);
+  }
+}
+
+@keyframes central-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+  }
+}
+
+.animate-central-grow {
+  animation: central-grow 1s ease-out forwards,
+    central-pulse 2s ease-in-out 1s infinite;
+  will-change: transform, box-shadow;
+}
+
+/* Node animations */
+@keyframes node-appear {
+  0% {
+    opacity: 0;
+    transform: scale3d(0, 0, 1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes node-pulse {
+  0%,
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+  50% {
+    transform: scale3d(1.2, 1.2, 1);
+  }
+}
+
+.animate-node-1 {
+  opacity: 0;
+  animation: node-appear 0.8s ease-out 2s forwards,
+    node-pulse 3s ease-in-out 3s infinite;
+  will-change: transform, opacity;
+}
+
+.animate-node-2 {
+  opacity: 0;
+  animation: node-appear 0.8s ease-out 2.5s forwards,
+    node-pulse 3s ease-in-out 3.5s infinite;
+  will-change: transform, opacity;
+}
+
+.animate-node-3 {
+  opacity: 0;
+  animation: node-appear 0.8s ease-out 3s forwards,
+    node-pulse 3s ease-in-out 4s infinite;
+  will-change: transform, opacity;
+}
+
+.animate-node-4 {
+  opacity: 0;
+  animation: node-appear 0.8s ease-out 3.5s forwards,
+    node-pulse 3s ease-in-out 4.5s infinite;
+  will-change: transform, opacity;
+}
+
+.animate-node-5 {
+  opacity: 0;
+  animation: node-appear 0.8s ease-out 4s forwards,
+    node-pulse 3s ease-in-out 5s infinite;
+  will-change: transform, opacity;
+}
+
+.animate-node-6 {
+  opacity: 0;
+  animation: node-appear 0.8s ease-out 4.5s forwards,
+    node-pulse 3s ease-in-out 5.5s infinite;
+  will-change: transform, opacity;
+}
+
+.animate-node-7 {
+  opacity: 0;
+  animation: node-appear 0.8s ease-out 5s forwards,
+    node-pulse 3s ease-in-out 6s infinite;
+  will-change: transform, opacity;
+}
+
+.animate-node-8 {
+  opacity: 0;
+  animation: node-appear 0.8s ease-out 5.5s forwards,
+    node-pulse 3s ease-in-out 6.5s infinite;
+  will-change: transform, opacity;
+}
+
+/* Line drawing animations */
+@keyframes draw-line {
+  0% {
+    stroke-dashoffset: 100;
+    opacity: 0;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+.animate-draw-line-1 {
+  animation: draw-line 1s ease-out 2.2s forwards;
+}
+
+.animate-draw-line-2 {
+  animation: draw-line 1s ease-out 2.7s forwards;
+}
+
+.animate-draw-line-3 {
+  animation: draw-line 1s ease-out 3.2s forwards;
+}
+
+.animate-draw-line-4 {
+  animation: draw-line 1s ease-out 3.7s forwards;
+}
+
+.animate-draw-line-5 {
+  animation: draw-line 1s ease-out 4.2s forwards;
+}
+
+.animate-draw-line-6 {
+  animation: draw-line 1s ease-out 4.7s forwards;
+}
+
+.animate-draw-line-7 {
+  animation: draw-line 1s ease-out 5.2s forwards;
+}
+
+.animate-draw-line-8 {
+  animation: draw-line 1s ease-out 5.7s forwards;
+}
+
+/* Client node animations */
+@keyframes client-pulse {
+  0%,
+  100% {
+    transform: scale3d(1, 1, 1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale3d(1.5, 1.5, 1);
+    opacity: 1;
+  }
+}
+
+.animate-client-node {
+  opacity: 0;
+  animation: node-appear 0.5s ease-out 8s forwards,
+    client-pulse 4s ease-in-out 9s infinite;
+  will-change: transform, opacity;
+}
+
+/* Label animations */
+@keyframes label-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-label-appear {
+  opacity: 0;
+  animation: label-appear 0.5s ease-out 0.3s forwards;
+  will-change: transform, opacity;
+}
+
+.animate-central-label {
+  opacity: 0;
+  animation: label-appear 1s ease-out 1s forwards;
+  will-change: transform, opacity;
+}
+
+/* Particle animations */
+@keyframes particle-flow-1 {
+  0% {
+    opacity: 1;
+    left: 50%;
+    top: 50%;
+  }
+  100% {
+    opacity: 0;
+    left: 25%;
+    top: 30%;
+  }
+}
+
+@keyframes particle-flow-2 {
+  0% {
+    opacity: 1;
+    left: 50%;
+    top: 50%;
+  }
+  100% {
+    opacity: 0;
+    right: 25%;
+    top: 30%;
+  }
+}
+
+@keyframes particle-flow-3 {
+  0% {
+    opacity: 1;
+    left: 50%;
+    top: 50%;
+  }
+  100% {
+    opacity: 0;
+    left: 25%;
+    top: 70%;
+  }
+}
+
+@keyframes particle-flow-4 {
+  0% {
+    opacity: 1;
+    left: 50%;
+    top: 50%;
+  }
+  100% {
+    opacity: 0;
+    right: 25%;
+    top: 70%;
+  }
+}
+
+.animate-particle-1 {
+  opacity: 0;
+  animation: particle-flow-1 3s linear 10s infinite;
+  will-change: transform, opacity;
+}
+
+.animate-particle-2 {
+  opacity: 0;
+  animation: particle-flow-2 3s linear 10.5s infinite;
+  will-change: transform, opacity;
+}
+
+.animate-particle-3 {
+  opacity: 0;
+  animation: particle-flow-3 3s linear 11s infinite;
+  will-change: transform, opacity;
+}
+
+.animate-particle-4 {
+  opacity: 0;
+  animation: particle-flow-4 3s linear 11.5s infinite;
+  will-change: transform, opacity;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  /* Reduce animation complexity on mobile */
+  .animate-node-1,
+  .animate-node-2,
+  .animate-node-3,
+  .animate-node-4,
+  .animate-node-5,
+  .animate-node-6,
+  .animate-node-7,
+  .animate-node-8 {
+    animation-duration: 0.6s, 2s;
+  }
+
+  .animate-draw-line-1,
+  .animate-draw-line-2,
+  .animate-draw-line-3,
+  .animate-draw-line-4,
+  .animate-draw-line-5,
+  .animate-draw-line-6,
+  .animate-draw-line-7,
+  .animate-draw-line-8 {
+    animation-duration: 0.8s;
+  }
+
+  /* Smaller font sizes for mobile */
+  .animate-label-appear {
+    font-size: 0.625rem;
+  }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .animate-central-grow,
+  .animate-node-1,
+  .animate-node-2,
+  .animate-node-3,
+  .animate-node-4,
+  .animate-node-5,
+  .animate-node-6,
+  .animate-node-7,
+  .animate-node-8,
+  .animate-client-node,
+  .animate-particle-1,
+  .animate-particle-2,
+  .animate-particle-3,
+  .animate-particle-4 {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .animate-draw-line-1,
+  .animate-draw-line-2,
+  .animate-draw-line-3,
+  .animate-draw-line-4,
+  .animate-draw-line-5,
+  .animate-draw-line-6,
+  .animate-draw-line-7,
+  .animate-draw-line-8 {
+    animation: none;
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+}
