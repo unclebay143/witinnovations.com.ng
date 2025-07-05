@@ -6,7 +6,7 @@ import VrLightAnimation from "@/components/atom/Vr-light-animation";
 
 const Intro = () => {
   return (
-    <section id="about" className="py-32 px-6 text-center">
+    <section id="about" className="py-16 px-6 text-center">
       <motion.div
         className="max-w-3xl mx-auto"
         initial={{ opacity: 0, y: 40 }}
@@ -33,11 +33,11 @@ const Intro = () => {
           <div className="w-full md:w-[60%] ">
             <VrLightAnimation />
           </div>
-          <div>
-            <h1 className="text-2xl md:w-[40%] text-left md:text-4xl font-bold text-primary mb-4">
+          <div className="text-center md:text-left">
+            <h1 className="text-2xl md:w-[40%]  md:text-4xl font-bold text-primary mb-4">
               At WIT Innovations
             </h1>
-            <p className="opacity-70 text-left max-w-2xl">
+            <p className="opacity-70  max-w-2xl">
               we go beyond traditional IT services to deliver forward-thinking
               digital solutions. Our work spans custom software development,
               AI-powered education, and strategic technology consulting—all

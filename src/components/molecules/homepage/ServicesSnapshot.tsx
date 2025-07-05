@@ -48,7 +48,7 @@ export default function IndustriesSection() {
 
   return (
     <section className="py-16 px-6">
-      <div className="max-w-4xl mx-auto text-left">
+      <div className="max-w-4xl mx-auto text-center md:text-left">
         <h2 className="text-3xl text-primary font-bold mb-2">What We Offer</h2>
         <p className="mb-8">
           From strategy to execution, we help you thrive with transformative

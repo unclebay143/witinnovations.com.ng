@@ -5,7 +5,7 @@ import { ContactHero } from "@/components/molecules/contact/ContactHero";
 
 export default function Page() {
   return (
-    <main>
+    <main className="overflow-x-hidden">
       <ContactHero />
       <ContactForm />
       <BookingCalendar />

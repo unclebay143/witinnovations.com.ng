@@ -109,7 +109,7 @@ function ShootingStars() {
 
 export default function Component() {
   return (
-    <div className="min-h-screen  flex items-center justify-center p-8">
+    <div className="min-h-[70vh]  flex items-center justify-center px-8">
       <div className="relative w-full max-w-2xl aspect-[3/4] overflow-hidden rounded-2xl">
         <div className="absolute inset-0">
           <Image
