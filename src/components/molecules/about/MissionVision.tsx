@@ -39,7 +39,7 @@ const MissionVision = () => {
     <section className="relative py-20 bg-[#E5E5E5] overflow-hidden">
       <InteractiveBackground />
       <div className="relative max-w-6xl mx-auto px-4 z-10">
-        <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {cardData.map((card, index) => {
             const Icon = card.icon;
             return (

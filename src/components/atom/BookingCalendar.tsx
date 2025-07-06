@@ -135,7 +135,7 @@ const BookingCalendar = () => {
 
       <div className="absolute inset-0 bg-black/30"></div>
 
-      <div className="relative z-10 flex flex-col md:flex-row items-center gap-10 max-w-6xl py-6 px-4">
+      <div className="relative z-10 flex flex-col lg:flex-row items-center gap-10 max-w-6xl py-6 px-4">
         <div className="text-white text-center md:text-left space-y-4 max-w-md">
           <h2 className="text-4xl font-bold">
             It is just an idea until you talk to us.

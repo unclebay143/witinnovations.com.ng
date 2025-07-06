@@ -38,7 +38,7 @@ const OurPhilosophy = () => {
 
   return (
     <div>
-      <section className="max-w-5xl mx-auto px-6 md:px-20 py-32 text-[#eaeaea] bg-[#252525] rounded-md text-center mt-16">
+      <section className="max-w-5xl mx-auto px-6 md:px-20 py-32 text-[#eaeaea] bg-[#252525] lg:rounded-md text-center mt-16">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}

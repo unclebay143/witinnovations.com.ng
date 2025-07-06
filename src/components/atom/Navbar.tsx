@@ -106,7 +106,7 @@ const Navbar = () => {
                     className="focus:outline-none"
                   >
                     {isOpen ? (
-                      <X size={24} className="text-red-700" />
+                      <X size={24} className="text-[#FFF]" />
                     ) : (
                       <Menu size={24} className="text-[#FFF]" />
                     )}

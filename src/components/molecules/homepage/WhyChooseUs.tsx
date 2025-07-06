@@ -75,7 +75,7 @@ const WhyChooseUs = () => {
           Why Choose WIT Innovations?
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 md:gap-16 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-16 gap-8">
           {features.map((feature, idx) => (
             <motion.div
               key={idx}
