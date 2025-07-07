@@ -3,28 +3,20 @@ import Marquee from "react-fast-marquee";
 const Partners = () => {
   const trustedCompanies = [
     {
-      name: "TechFlow",
-      logo: "https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGdvb2dsZXxlbnwwfHwwfHx8MA%3D%3D",
+      name: "https://res.cloudinary.com/dtryuudiy/image/upload/v1746616130/logo_5_bozrnp_prxhii.png",
+      logo: "ITF",
     },
     {
-      name: "InnovateLab",
-      logo: "https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGdvb2dsZXxlbnwwfHwwfHx8MA%3D%3D",
+      name: "https://res.cloudinary.com/dtryuudiy/image/upload/v1748257141/Shamzbridge_Consult_white_lw5zgv.png",
+      logo: "Shamzbridge",
     },
     {
-      name: "GrowthCorp",
-      logo: "https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGdvb2dsZXxlbnwwfHwwfHx8MA%3D%3D",
+      name: "https://res.cloudinary.com/dcgghkk7q/image/upload/v1751881330/image-07-02-2025_09_18_AM-removebg-preview_ohof8g.png",
+      logo: "NECA-ICT-Academy",
     },
     {
-      name: "StartupHub",
-      logo: "https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGdvb2dsZXxlbnwwfHwwfHx8MA%3D%3D",
-    },
-    {
-      name: "CloudTech",
-      logo: "https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGdvb2dsZXxlbnwwfHwwfHx8MA%3D%3D",
-    },
-    {
-      name: "DataSync",
-      logo: "https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGdvb2dsZXxlbnwwfHwwfHx8MA%3D%3D",
+      name: "https://res.cloudinary.com/dcgghkk7q/image/upload/v1751881330/image-07-02-2025_09_30_AM_1_sgyajo.png",
+      logo: "NECA",
     },
   ];
   return (
@@ -40,8 +32,8 @@ const Partners = () => {
               className="w-64 h-36  flex justify-center items-center mx-6 "
             >
               <img
-                src={company?.logo}
-                alt={company?.name}
+                src={company?.name}
+                alt={company?.logo}
                 className="object-cover"
               />
             </div>

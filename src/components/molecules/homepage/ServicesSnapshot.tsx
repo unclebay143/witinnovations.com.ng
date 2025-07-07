@@ -43,7 +43,7 @@ const services = [
   },
 ];
 
-export default function IndustriesSection() {
+export default function ServicesSnapshot() {
   const [hovered, setHovered] = useState<number>(0);
 
   return (
@@ -70,12 +70,25 @@ export default function IndustriesSection() {
                 fill
                 className="object-cover"
               />
-              {hovered === index && (
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-black/0 text-white p-4 flex flex-col justify-end">
-                  <h3 className="text-lg font-bold">{service.name}</h3>
-                  <p className="text-sm">{service.description}</p>
-                </div>
-              )}
+
+              {/* Always-visible gradient overlays */}
+              <div className="absolute inset-0">
+                {/* Light blue gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#cfe8ff] via-transparent to-transparent opacity-60 z-10" />
+
+                {/* Black gradient for text contrast */}
+                <div className="absolute inset-0 bg-gradient-to-t from-blue-600 via-black/10 to-transparent z-20" />
+              </div>
+
+              {/* Text content (shown only on hover) */}
+              <div className="absolute inset-0 p-4 flex flex-col justify-end z-30 text-white">
+                <h3 className="text-lg font-bold">{service.name}</h3>
+                {hovered === index && (
+                  <p className="text-sm transition-opacity duration-300 opacity-100">
+                    {service.description}
+                  </p>
+                )}
+              </div>
             </div>
           ))}
         </div>

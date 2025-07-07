@@ -49,7 +49,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative h-[80vh] bg-gradient-to-br from-[#252525] via-[#024FF0] to-[#252525] text-white overflow-hidden">
+    <section className="relative h-screen bg-gradient-to-br from-[#252525] via-[#024FF0] to-[#252525] text-white overflow-hidden">
       <Hero3D />
 
       <div className="absolute inset-0 bg-[#252525] z-0" />

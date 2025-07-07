@@ -17,19 +17,19 @@ function AnimatedSphere() {
 
   useFrame((state: RootState) => {
     if (meshRef.current) {
-      meshRef.current.rotation.x = state.clock.elapsedTime * 0.2;
-      meshRef.current.rotation.y = state.clock.elapsedTime * 0.3;
+      meshRef.current.rotation.x = state.clock.elapsedTime * 0.05;
+      meshRef.current.rotation.y = state.clock.elapsedTime * 0.08;
     }
   });
 
   return (
-    <Float speed={1.5} rotationIntensity={1} floatIntensity={2}>
+    <Float speed={0.5} rotationIntensity={0.3} floatIntensity={0.8}>
       <Sphere ref={meshRef} args={[1, 100, 200]} scale={2}>
         <MeshDistortMaterial
           color="#3b82f6"
           attach="material"
           distort={0.3}
-          speed={1.5}
+          speed={6}
           roughness={0}
           metalness={0.8}
         />
@@ -40,7 +40,7 @@ function AnimatedSphere() {
 
 function FloatingCubes() {
   const cubes = Array.from({ length: 5 }, (_, i) => (
-    <Float key={i} speed={1 + i * 0.2} rotationIntensity={1} floatIntensity={1}>
+    <Float key={i} speed={0.5} rotationIntensity={0.2} floatIntensity={0.5}>
       <mesh
         position={[
           Math.random() * 10 - 5,
@@ -73,15 +73,13 @@ const Hero3D = () => {
           intensity={0.5}
           color="#3b82f6"
         />
-
         <AnimatedSphere />
         <FloatingCubes />
-
         <OrbitControls
           enableZoom={false}
           enablePan={false}
           autoRotate
-          autoRotateSpeed={0.5}
+          autoRotateSpeed={0.2}
         />
       </Canvas>
     </div>
