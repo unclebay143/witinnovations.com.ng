@@ -193,7 +193,7 @@ export default function Footer() {
                 <a
                   href="mailto:hello@witinnovations.com.ng"
                   target="blank"
-                  className="underline text-[#024FF0] hover:text-cyan-400 transition-colors duration-300"
+                  className="underline cursor-pointer duration-300"
                 >
                   hello@witinnovations.com.ng
                 </a>
