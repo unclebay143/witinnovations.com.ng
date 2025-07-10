@@ -1,7 +1,8 @@
 "use client";
+
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, Clock, Globe, Video } from "lucide-react";
+import { ChevronLeft, ChevronRight, Globe, Video } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import UserDetailsForm from "./UserDetailsForm";
 
@@ -20,7 +21,6 @@ const CalendlyBooking = () => {
   >("calendar");
   const [selectedDate, setSelectedDate] = useState<number | null>(null);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
-  const [selectedDuration, setSelectedDuration] = useState("30m");
   const [timeFormat, setTimeFormat] = useState<"12h" | "24h">("12h");
   const [currentMonth, setCurrentMonth] = useState(6);
   const [currentYear, setCurrentYear] = useState(2025);
@@ -48,7 +48,7 @@ const CalendlyBooking = () => {
     "November",
     "December",
   ];
-  const durations = ["15m", "30m", "1h"];
+
   const availableTimes12h = ["1:00pm", "2:00pm", "3:00pm", "4:00pm", "5:00pm"];
   const availableTimes24h = ["13:00", "14:00", "15:00", "16:00", "17:00"];
 
@@ -56,10 +56,29 @@ const CalendlyBooking = () => {
     const days = [];
     const firstDay = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+    // Get today's date for comparison
+    const today = new Date();
+    const todayYear = today.getFullYear();
+    const todayMonth = today.getMonth();
+    const todayDate = today.getDate();
+
     for (let i = 0; i < firstDay; i++) days.push(null);
+
     for (let day = 1; day <= daysInMonth; day++) {
-      const unavailableDays = [0];
-      const isAvailable = !unavailableDays.includes(day);
+      const unavailableDays = [0]; // Sundays (0 = Sunday)
+      const dayOfWeek = new Date(year, month, day).getDay();
+
+      // Check if the date is in the past
+      const isPastDate =
+        year < todayYear ||
+        (year === todayYear && month < todayMonth) ||
+        (year === todayYear && month === todayMonth && day < todayDate);
+
+      // Check if it's an unavailable day of the week
+      const isUnavailableDay = unavailableDays.includes(dayOfWeek);
+
+      const isAvailable = !isPastDate && !isUnavailableDay;
       days.push({ day, isAvailable });
     }
     return days;
@@ -68,14 +87,31 @@ const CalendlyBooking = () => {
   const calendarDays = generateCalendar(currentMonth, currentYear);
 
   const handlePrevMonth = () => {
+    // Prevent going to past months
+    const today = new Date();
+    const todayYear = today.getFullYear();
+    const todayMonth = today.getMonth();
+
+    let newMonth = currentMonth;
+    let newYear = currentYear;
+
     if (currentMonth === 0) {
-      setCurrentMonth(11);
-      setCurrentYear(currentYear - 1);
+      newMonth = 11;
+      newYear = currentYear - 1;
     } else {
-      setCurrentMonth(currentMonth - 1);
+      newMonth = currentMonth - 1;
     }
-    setSelectedDate(null);
-    setSelectedTime(null);
+
+    // Only allow navigation if the new month is not in the past
+    if (
+      newYear > todayYear ||
+      (newYear === todayYear && newMonth >= todayMonth)
+    ) {
+      setCurrentMonth(newMonth);
+      setCurrentYear(newYear);
+      setSelectedDate(null);
+      setSelectedTime(null);
+    }
   };
 
   const handleNextMonth = () => {
@@ -104,7 +140,6 @@ const CalendlyBooking = () => {
         ...prev,
         date: selectedDate,
         time: selectedTime,
-        duration: selectedDuration,
       }));
       setCurrentStep("form");
     }
@@ -141,6 +176,25 @@ const CalendlyBooking = () => {
     return date.toLocaleDateString("en-US", { weekday: "long" });
   };
 
+  // Check if the previous month button should be disabled
+  const isPrevMonthDisabled = () => {
+    const today = new Date();
+    const todayYear = today.getFullYear();
+    const todayMonth = today.getMonth();
+
+    if (currentMonth === 0) {
+      return (
+        currentYear - 1 < todayYear ||
+        (currentYear - 1 === todayYear && 11 < todayMonth)
+      );
+    } else {
+      return (
+        currentYear < todayYear ||
+        (currentYear === todayYear && currentMonth - 1 < todayMonth)
+      );
+    }
+  };
+
   return (
     <section className="w-full bg-gray-800 min-h-screen flex items-center justify-center px-4">
       <div className="w-full max-w-6xl bg-gray-800 flex flex-col lg:flex-row items-center justify-center">
@@ -157,39 +211,15 @@ const CalendlyBooking = () => {
               Let&apos;s Talk!
             </p>
           </div>
-
-          <div className="mb-6">
-            <div className="flex items-center gap-2 mb-2">
-              <Clock className="w-4 h-4 text-gray-400" />
-            </div>
-            <div className="flex gap-2 flex-wrap justify-center">
-              {durations.map((duration) => (
-                <button
-                  key={duration}
-                  onClick={() => setSelectedDuration(duration)}
-                  className={`px-3 py-1 rounded text-sm border cursor-pointer transition-colors ${
-                    selectedDuration === duration
-                      ? "bg-[#024FF0] text-white border-[#024FF0]"
-                      : "text-gray-300 border-gray-600 hover:border-gray-500"
-                  }`}
-                >
-                  {duration}
-                </button>
-              ))}
-            </div>
-          </div>
-
           <div className="mb-6 text-gray-300 text-sm flex items-center gap-2">
             <Video className="w-4 h-4" />
             <span>Google Meet</span>
           </div>
-
           <div className="mt-auto text-gray-400 text-sm flex items-center gap-2">
             <Globe className="w-4 h-4" />
             <span>Africa/Lagos</span>
           </div>
         </div>
-
         {/* Main Content */}
         <div className="flex-1 flex flex-col min-h-0">
           <AnimatePresence mode="wait">
@@ -206,9 +236,14 @@ const CalendlyBooking = () => {
                   <div className="flex items-center justify-between mb-6 lg:mb-8">
                     <button
                       onClick={handlePrevMonth}
-                      className="p-2 hover:bg-gray-800 rounded transition-colors"
+                      disabled={isPrevMonthDisabled()}
+                      className={`p-2 rounded transition-colors ${
+                        isPrevMonthDisabled()
+                          ? "text-gray-600 cursor-not-allowed"
+                          : "hover:bg-gray-800 text-gray-400"
+                      }`}
                     >
-                      <ChevronLeft className="w-5 h-5 text-gray-400" />
+                      <ChevronLeft className="w-5 h-5" />
                     </button>
                     <h3 className="text-white text-lg lg:text-xl font-medium">
                       {monthNames[currentMonth]} {currentYear}
@@ -220,7 +255,6 @@ const CalendlyBooking = () => {
                       <ChevronRight className="w-5 h-5 text-gray-400" />
                     </button>
                   </div>
-
                   <div className="grid grid-cols-7 gap-1 lg:gap-2 mb-4">
                     {daysOfWeek.map((day) => (
                       <div
@@ -231,17 +265,22 @@ const CalendlyBooking = () => {
                       </div>
                     ))}
                   </div>
-
                   <div className="grid grid-cols-7 gap-1 lg:gap-2 ">
                     {calendarDays.map((dayData, index) => {
                       if (!dayData) {
-                        return <div key={index} className="h-10 lg:h-12" />;
+                        return (
+                          <div
+                            key={`empty-${index}`}
+                            className="h-10 lg:h-12"
+                          />
+                        );
                       }
                       const { day, isAvailable } = dayData;
                       const isSelected = selectedDate === day;
+                      const key = `${currentYear}-${currentMonth + 1}-${day}`;
                       return (
                         <button
-                          key={day}
+                          key={key}
                           onClick={() => handleDateSelect(day, isAvailable)}
                           disabled={!isAvailable}
                           className={`h-10 cursor-pointer  lg:h-12 rounded-lg text-sm font-medium transition-colors ${
@@ -258,7 +297,6 @@ const CalendlyBooking = () => {
                     })}
                   </div>
                 </div>
-
                 {/* Time Selection */}
                 <div className="w-full lg:w-80 p-4 lg:p-8 bg-gray-850 border-t lg:border-t-0 lg:border-l border-gray-700">
                   <AnimatePresence>
@@ -295,7 +333,6 @@ const CalendlyBooking = () => {
                             </button>
                           </div>
                         </div>
-
                         <div className="space-y-3 max-h-60 lg:max-h-none overflow-y-auto">
                           {(timeFormat === "12h"
                             ? availableTimes12h
@@ -314,7 +351,6 @@ const CalendlyBooking = () => {
                             </button>
                           ))}
                         </div>
-
                         {selectedTime && (
                           <motion.div
                             initial={{ opacity: 0, y: 10 }}
@@ -335,7 +371,6 @@ const CalendlyBooking = () => {
                 </div>
               </motion.div>
             )}
-
             {currentStep === "form" && (
               <motion.div
                 key="form"
@@ -347,13 +382,11 @@ const CalendlyBooking = () => {
                 <UserDetailsForm
                   selectedDate={selectedDate!}
                   selectedTime={selectedTime!}
-                  selectedDuration={selectedDuration}
                   onSubmit={handleFormSubmit}
                   onBack={handleBackToCalendar}
                 />
               </motion.div>
             )}
-
             {currentStep === "success" && (
               <motion.div
                 key="success"
@@ -386,7 +419,7 @@ const CalendlyBooking = () => {
                     {monthNames[currentMonth]} {bookingData.date}, {currentYear}
                   </p>
                   <p className="text-gray-300 mb-6">
-                    at {bookingData.time} ({bookingData.duration})
+                    at {bookingData.time} - Lagos Time
                   </p>
                   <p className="text-gray-400 text-sm mb-8">
                     We&apos;ll send you a confirmation email with the Google

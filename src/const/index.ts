@@ -1,5 +1,5 @@
 export const WIT_LOGO =
-  "https://res.cloudinary.com/dcgghkk7q/image/upload/v1751380639/WIT-logo_rcbccr.png";
+  "https://res.cloudinary.com/dcgghkk7q/image/upload/v1752134042/WIT_white_logo_mark_zni94o.png";
 
 export const projects = [
   {

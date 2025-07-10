@@ -21,7 +21,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 interface UserDetailsFormProps {
   selectedDate: number;
   selectedTime: string;
-  selectedDuration: string;
   onSubmit: (data: { name: string; email: string; message: string }) => void;
   onBack: () => void;
 }
@@ -29,7 +28,6 @@ interface UserDetailsFormProps {
 const UserDetailsForm = ({
   selectedDate,
   selectedTime,
-  selectedDuration,
   onSubmit,
   onBack,
 }: UserDetailsFormProps) => {
@@ -48,7 +46,6 @@ const UserDetailsForm = ({
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
     onSubmit(formData);
@@ -91,7 +88,7 @@ const UserDetailsForm = ({
               <div className="flex items-center gap-2 text-gray-300">
                 <Clock className="w-4 h-4" />
                 <span>
-                  {selectedTime} ({selectedDuration})
+                  {selectedTime} ({selectedTime})
                 </span>
               </div>
               <div className="flex items-center gap-2 text-gray-300">

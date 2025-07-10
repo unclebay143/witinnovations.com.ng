@@ -176,7 +176,13 @@ export const ContactForm = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold mb-1">Email Us</h4>
-                    <p className="opacity-70">hello@witinnovations.com.ng</p>
+                    <a
+                      href="mailto:hello@witinnovations.com.ng"
+                      target="blank"
+                      className="opacity-70 hover:underline duration-300 ease-in-out"
+                    >
+                      hello@witinnovations.com.ng
+                    </a>
                   </div>
                 </div>
 
@@ -198,9 +204,9 @@ export const ContactForm = () => {
                   <div>
                     <h4 className="font-semibold mb-1">Business Hours</h4>
                     <p className="opacity-70">
-                      Monday - Friday: 9:00 AM - 6:00 PM
+                      Monday - Wednesday: 9:00 AM - 5:00 PM
                     </p>
-                    <p className="opacity-70">Saturday: 10:00 AM - 4:00 PM</p>
+                    <p className="opacity-70">Friday: 9:00 AM - 12:00 PM</p>
                   </div>
                 </div>
               </div>

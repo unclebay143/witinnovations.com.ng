@@ -69,9 +69,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${urbanist.className} text-base md:text-lg `}>
+      <body className={`${urbanist.className} text-base md:text-lg  `}>
         <Navbar />
-        <main className="pt-26 ">{children}</main>
+        <main className="pt-  min-h-screen  ">{children}</main>
         <Footer />
       </body>
     </html>

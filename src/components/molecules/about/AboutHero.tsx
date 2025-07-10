@@ -2,8 +2,8 @@
 
 const AboutHero = () => {
   return (
-    <section className="bg-gradient-to-br from-slate-900 to-blue-900 text-white py-20">
-      <div className="container mx-auto px-4">
+    <section className="bg-gradient-to-br from-slate-900 to-blue-900 text-white min-h-[60vh] flex items-center">
+      <div className="max-w-6xl mx-auto px-4 w-full">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl lg:text-5xl font-bold mb-6">
             About WIT Innovations

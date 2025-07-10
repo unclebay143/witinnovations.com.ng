@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { Logo } from "./Logo";
+// import { Logo } from "./logo";
 
 interface NavItem {
   name: string;
@@ -14,6 +15,7 @@ interface NavItem {
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(true);
+  const [isScrolled, setIsScrolled] = useState(false);
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -53,16 +55,21 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setIsScrolled(scrollPosition > 0);
       setShowNavbar(false);
+
       if (scrollTimeoutRef.current) {
         clearTimeout(scrollTimeoutRef.current);
       }
+
       scrollTimeoutRef.current = setTimeout(() => {
         setShowNavbar(true);
       }, 500);
     };
 
     window.addEventListener("scroll", handleScroll);
+
     return () => {
       if (scrollTimeoutRef.current) {
         clearTimeout(scrollTimeoutRef.current);
@@ -81,7 +88,9 @@ const Navbar = () => {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -100, opacity: 0 }}
             transition={{ duration: 0.7, ease: "easeInOut" }}
-            className="fixed top-0 left-0 w-full z-50 bg-[#252525] text-white shadow-md"
+            className={`fixed top-0 left-0 w-full z-50 text-white transition-all duration-300 ${
+              isScrolled ? "bg-[#252525]" : ""
+            }`}
           >
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-0 font-medium">
               <div className="flex justify-between items-center h-[106px]">
@@ -138,7 +147,7 @@ const Navbar = () => {
                 >
                   <Link
                     href={item.href}
-                    className="block text-white hover:text-[#024FF0] hover:border-[#024FF0] shadow-md border-b border-[#353535] text-xl font-medium transition duration-300 ease-in-out"
+                    className="block text-white hover:text-[#024FF0] hover:border-[#024FF0] border-b border-[#353535] text-xl font-medium transition duration-300 ease-in-out"
                     onClick={() => setIsOpen(false)}
                   >
                     {item.name}
