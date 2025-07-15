@@ -1,7 +1,6 @@
 "use client";
 
 import type React from "react";
-
 import { useState } from "react";
 import { motion } from "framer-motion";
 import {
@@ -11,6 +10,7 @@ import {
   User,
   Mail,
   MessageSquare,
+  AlertCircle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -21,6 +21,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 interface UserDetailsFormProps {
   selectedDate: number;
   selectedTime: string;
+  currentMonth: number;
+  currentYear: number;
+  monthNames: string[];
   onSubmit: (data: { name: string; email: string; message: string }) => void;
   onBack: () => void;
 }
@@ -28,6 +31,9 @@ interface UserDetailsFormProps {
 const UserDetailsForm = ({
   selectedDate,
   selectedTime,
+  currentMonth,
+  currentYear,
+  monthNames,
   onSubmit,
   onBack,
 }: UserDetailsFormProps) => {
@@ -37,19 +43,74 @@ const UserDetailsForm = ({
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [submitSuccess, setSubmitSuccess] = useState<string | null>(null);
 
   const handleInputChange = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
+    if (submitError) setSubmitError(null);
+    if (submitSuccess) setSubmitSuccess(null);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError(null);
+    setSubmitSuccess(null);
 
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    try {
+      console.log("Submitting booking form...");
+      const emailResponse = await fetch("/api/send-booking-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          date: selectedDate,
+          time: selectedTime,
+          month: monthNames[currentMonth],
+          year: currentYear,
+        }),
+      });
 
-    onSubmit(formData);
-    setIsSubmitting(false);
+      const emailResult = await emailResponse.json();
+
+      if (!emailResult.success) {
+        throw new Error(
+          emailResult.error || "Failed to send booking confirmation emails"
+        );
+      }
+
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+
+      onSubmit(formData);
+    } catch (error) {
+      console.error("Error submitting booking:", error);
+
+      let errorMessage =
+        "Failed to send booking confirmation. Please try again.";
+
+      if (error instanceof Error) {
+        if (error.message.includes("Invalid email")) {
+          errorMessage = "Please enter a valid email address.";
+        } else if (error.message.includes("domain verification")) {
+          errorMessage =
+            "Booking received! We'll send you a confirmation email manually within a few minutes.";
+          setSubmitSuccess(errorMessage);
+          setTimeout(() => onSubmit(formData), 2000);
+          return;
+        } else {
+          errorMessage = `Failed to send booking confirmation: ${error.message}`;
+        }
+      }
+
+      setSubmitError(errorMessage);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const isFormValid = formData.name.trim() && formData.email.trim();
@@ -76,20 +137,19 @@ const UserDetailsForm = ({
           <CardTitle className="text-white text-xl">
             Enter Your Details
           </CardTitle>
-
           {/* Booking Summary */}
           <div className="bg-gray-700 rounded-lg p-4 mt-4">
             <h4 className="text-white font-medium mb-3">Booking Summary</h4>
             <div className="space-y-2 text-sm">
               <div className="flex items-center gap-2 text-gray-300">
                 <Calendar className="w-4 h-4" />
-                <span>Thursday, July {selectedDate}, 2025</span>
+                <span>
+                  {monthNames[currentMonth]} {selectedDate}, {currentYear}
+                </span>
               </div>
               <div className="flex items-center gap-2 text-gray-300">
                 <Clock className="w-4 h-4" />
-                <span>
-                  {selectedTime} ({selectedTime})
-                </span>
+                <span>{selectedTime} (Lagos Time)</span>
               </div>
               <div className="flex items-center gap-2 text-gray-300">
                 <span className="w-4 h-4 flex items-center justify-center">
@@ -100,9 +160,22 @@ const UserDetailsForm = ({
             </div>
           </div>
         </CardHeader>
-
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-6">
+            {submitError && (
+              <div className="bg-red-900/50 border border-red-500 text-red-200 px-4 py-3 rounded-lg text-sm flex items-start gap-2">
+                <AlertCircle className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                <span>{submitError}</span>
+              </div>
+            )}
+            {submitSuccess && (
+              <div className="bg-green-900/50 border border-green-500 text-green-200 px-4 py-3 rounded-lg text-sm flex items-start gap-2">
+                <div className="w-4 h-4 mt-0.5 flex-shrink-0 text-green-400">
+                  ✓
+                </div>
+                <span>{submitSuccess}</span>
+              </div>
+            )}
             <div className="space-y-2">
               <Label
                 htmlFor="name"
@@ -121,7 +194,6 @@ const UserDetailsForm = ({
                 className="bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-[#024FF0]"
               />
             </div>
-
             <div className="space-y-2">
               <Label
                 htmlFor="email"
@@ -140,7 +212,6 @@ const UserDetailsForm = ({
                 className="bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-[#024FF0]"
               />
             </div>
-
             <div className="space-y-2">
               <Label
                 htmlFor="message"
@@ -158,7 +229,6 @@ const UserDetailsForm = ({
                 className="bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-[#024FF0] resize-none"
               />
             </div>
-
             <div className="pt-4">
               <Button
                 type="submit"
@@ -175,11 +245,13 @@ const UserDetailsForm = ({
                 )}
               </Button>
             </div>
-
-            <p className="text-xs text-gray-400 text-center">
-              By scheduling this meeting, you agree to receive calendar
-              invitations and meeting reminders.
-            </p>
+            <div className="bg-blue-900/30 border border-blue-500/50 rounded-lg p-3">
+              <p className="text-xs text-blue-200 text-center">
+                <AlertCircle className="w-3 h-3 inline mr-1" />
+                You&apos;ll receive a confirmation email with the Google Meet
+                link within a few minutes of booking.
+              </p>
+            </div>
           </form>
         </CardContent>
       </Card>

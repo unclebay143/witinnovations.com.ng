@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Globe, Video } from "lucide-react";
@@ -79,8 +78,10 @@ const CalendlyBooking = () => {
       const isUnavailableDay = unavailableDays.includes(dayOfWeek);
 
       const isAvailable = !isPastDate && !isUnavailableDay;
+
       days.push({ day, isAvailable });
     }
+
     return days;
   };
 
@@ -220,6 +221,7 @@ const CalendlyBooking = () => {
             <span>Africa/Lagos</span>
           </div>
         </div>
+
         {/* Main Content */}
         <div className="flex-1 flex flex-col min-h-0">
           <AnimatePresence mode="wait">
@@ -297,6 +299,7 @@ const CalendlyBooking = () => {
                     })}
                   </div>
                 </div>
+
                 {/* Time Selection */}
                 <div className="w-full lg:w-80 p-4 lg:p-8 bg-gray-850 border-t lg:border-t-0 lg:border-l border-gray-700">
                   <AnimatePresence>
@@ -371,6 +374,7 @@ const CalendlyBooking = () => {
                 </div>
               </motion.div>
             )}
+
             {currentStep === "form" && (
               <motion.div
                 key="form"
@@ -382,11 +386,15 @@ const CalendlyBooking = () => {
                 <UserDetailsForm
                   selectedDate={selectedDate!}
                   selectedTime={selectedTime!}
+                  currentMonth={currentMonth}
+                  currentYear={currentYear}
+                  monthNames={monthNames}
                   onSubmit={handleFormSubmit}
                   onBack={handleBackToCalendar}
                 />
               </motion.div>
             )}
+
             {currentStep === "success" && (
               <motion.div
                 key="success"
