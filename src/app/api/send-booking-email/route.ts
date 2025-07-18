@@ -96,7 +96,7 @@ export async function POST(request: NextRequest) {
               <p><strong>🕐 Time:</strong> ${time} (Lagos Time)</p>
               <p><strong>⏱️ Duration:</strong> 30 minutes</p>
               <p><strong>🎥 Platform:</strong> Google Meet</p>
-              <p>Google Meet Link: [INSERT MEET LINK HERE]</p>
+              <p>To be sent shortly</p>
               <p>Looking forward to speaking with you!</p>
             </div>
           </div>
